@@ -14,6 +14,7 @@ const $submitStoryForm = $("#submit-story-form");
 
 const $loginForm = $("#login-form");
 const $signupForm = $("#signup-form");
+const $userProfileForm = $("#user-profile-form")
 
 const $navLogin = $("#nav-login");
 const $navUserProfile = $("#nav-user-profile");
@@ -31,6 +32,7 @@ function hidePageComponents() {
     $ownStoriesList,
     $loginForm,
     $signupForm,
+    $userProfileForm,
     $submitStoryForm
   ];
   components.forEach(c => c.hide());

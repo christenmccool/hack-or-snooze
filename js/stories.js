@@ -42,7 +42,6 @@ function putStoriesOnPage() {
   console.debug("putStoriesOnPage");
 
   $allStoriesList.empty();
-
   let userFavorites;
   if (currentUser) {
     userFavorites = currentUser.favorites.map(story => story.storyId);

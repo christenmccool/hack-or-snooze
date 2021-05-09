@@ -107,7 +107,6 @@ class StoryList {
   async editStory(user, storyId, editedStory) {
     const results = await axios.patch(`${BASE_URL}/stories/${storyId}`, {token: user.loginToken, story: editedStory});
     const newStory = new Story(results.data.story);
-    console.log(newStory);
 
     this.stories = this.stories.map(function(story) {
       return story.storyId === storyId ? newStory : story;
@@ -209,6 +208,19 @@ class User {
     );
   }
 
+  /** Edit in user in API
+
+   * - editedUser: new username and/or password
+   */
+
+  async edit(editedUser) {   
+    await axios.patch(`${BASE_URL}/users/${this.username}`, {token: this.loginToken, user: editedUser});
+    
+    this.name = editedUser.name;
+
+  };
+
+s
   /** When we already have credentials (token & username) for a user,
    *   we can log them in automatically. This function does that.
    */
@@ -241,7 +253,6 @@ class User {
 
   /** Add a favorite to the user 
    * Reference the story Id
-   * Return the favorite story 
    */
 
   async addFavorite(storyId) {
@@ -250,7 +261,6 @@ class User {
     const favStory = new Story(results.data.user.favorites[index]);
 
     this.favorites.unshift(favStory);
-    return favStory;
   }
 
   /** Remove a favorite from the user 

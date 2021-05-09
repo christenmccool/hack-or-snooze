@@ -51,6 +51,31 @@ async function signup(evt) {
 
 $signupForm.on("submit", signup);
 
+/** Handle user profile form submission. */
+
+async function editUser(evt) {
+  console.debug("editUser", evt);
+  evt.preventDefault();
+
+  const name = $("#edit-name").val();
+  const password = $("#edit-password").val();
+
+  const editedUser = {
+    name : name, 
+    password : password,
+    username: currentUser.username,
+  }
+
+  await currentUser.edit(editedUser);
+
+  $("#edit-name").val("");
+  $("#edit-password").val("");
+  $userProfileForm.hide();
+  putStoriesOnPage();
+}
+
+$userProfileForm.on("submit", editUser);
+
 /** Handle click of logout button
  *
  * Remove their credentials from localStorage and refresh page
@@ -111,6 +136,7 @@ function saveUserCredentialsInLocalStorage() {
 function updateUIOnUserLogin() {
   console.debug("updateUIOnUserLogin");
 
+  putStoriesOnPage();
   $allStoriesList.show();
   $loginForm.hide();
   $signupForm.hide();

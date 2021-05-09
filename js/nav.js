@@ -57,6 +57,19 @@ function navLoginClick(evt) {
 
 $navLogin.on("click", navLoginClick);
 
+/** Edli name/password on click on username */
+
+function userProfileClick(evt) {
+  console.debug("userProfileClick", evt);
+  hidePageComponents();
+  $("#edit-name").val(currentUser.name);
+  $("#edit-password").val(currentUser.password);
+  $userProfileForm.show();
+}
+
+$navUserProfile.on("click", userProfileClick);
+
+
 /** When a user first logins in, update the navbar to reflect that. */
 
 function updateNavOnLogin() {

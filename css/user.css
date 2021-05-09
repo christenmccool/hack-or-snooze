@@ -9,6 +9,10 @@
   width: 8rem;
 }
 
+#user-profile-form button {
+  width: 8rem;
+}
+
 .account-forms-container {
   padding-left: 20px;
 }
