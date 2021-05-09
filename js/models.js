@@ -220,7 +220,7 @@ class User {
 
   };
 
-s
+
   /** When we already have credentials (token & username) for a user,
    *   we can log them in automatically. This function does that.
    */
