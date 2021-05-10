@@ -217,7 +217,6 @@ class User {
     await axios.patch(`${BASE_URL}/users/${this.username}`, {token: this.loginToken, user: editedUser});
     
     this.name = editedUser.name;
-
   };
 
 
@@ -257,9 +256,9 @@ class User {
 
   async addFavorite(storyId) {
     const results = await axios.post(`${BASE_URL}/users/${this.username}/favorites/${storyId}`, {token: this.loginToken});
+    
     let index = results.data.user.favorites.length - 1;
     const favStory = new Story(results.data.user.favorites[index]);
-
     this.favorites.unshift(favStory);
   }
 
